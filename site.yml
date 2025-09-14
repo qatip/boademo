@@ -19,6 +19,14 @@
         state: started
         enabled: yes
 
+    - name: Ensure web root exists
+      file:
+        path: "{{ web_root }}"
+        state: directory
+        owner: www-data
+        group: www-data
+        mode: '0755'
+
     - name: Deploy Bank of America demo homepage
       copy:
         src: files/index.html
